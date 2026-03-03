@@ -50,7 +50,46 @@ public class Piece {
     //return a list of every square that is "controlled" by this piece. A square is controlled
     //if the piece capture into it legally.
     public ArrayList<Square> getControlledSquares(Square[][] board, Square start) {
-     return null;
+        // return null;
+     //start by declaring the arrayList we wish to return at the end
+	    ArrayList<Square> moves = new ArrayList<Square>();
+
+	    //make sure the squares we are adding are in bounds. (you’d also need to check to make sure they aren’t occupied by a piece unless it’s a piece of the opposite color in which case you can capture it. I leave this bit for you to figure out.
+           if(start.getRow()-2>=0 && start.getCol()-2>=0){
+                //if the square is a legal move add it to the list.                    
+                moves.add(board[start.getRow()-2][start.getCol()-2]);
+            }
+            if(start.getRow()-1>=0 && start.getCol()-1>=0){
+                //if the square is a legal move add it to the list.                    
+                moves.add(board[start.getRow()-1][start.getCol()-1]);
+            }
+            if(start.getRow()-2>=0 && start.getCol()+2<8){
+                //if the square is a legal move add it to the list.                    
+                moves.add(board[start.getRow()-2][start.getCol()+2]);
+            }
+            if(start.getRow()-1>=0 && start.getCol()+1<8){
+                //if the square is a legal move add it to the list.                    
+                moves.add(board[start.getRow()-1][start.getCol()+1]);
+            }
+            if(start.getRow()+2<8 && start.getCol()-2>=0){
+                //if the square is a legal move add it to the list.                    
+                moves.add(board[start.getRow()+2][start.getCol()-2]);
+            }
+            if(start.getRow()+1<8 && start.getCol()-1>=0){
+                //if the square is a legal move add it to the list.                    
+                moves.add(board[start.getRow()+1][start.getCol()-1]);
+            }
+            if(start.getRow()+2<8 && start.getCol()+2<8){
+                //if the square is a legal move add it to the list.                    
+                moves.add(board[start.getRow()+2][start.getCol()+2]);
+            }
+            if(start.getRow()+1<8 && start.getCol()+1<8){
+                //if the square is a legal move add it to the list.                    
+                moves.add(board[start.getRow()+1][start.getCol()+1]);
+            }
+
+       //dont forget to return!
+       return moves;
     }
     
 
@@ -61,6 +100,46 @@ public class Piece {
     //please note that your piece must have some sort of logic. Just being able to move to every square on the board is not
     //going to score any points.
     public ArrayList<Square> getLegalMoves(Board b, Square start){
-    	return null;
+        //return null;
+
+        //start by declaring the arrayList we wish to return at the end
+	    ArrayList<Square> moves = new ArrayList<Square>();
+
+	    //make sure the squares we are adding are in bounds. (you’d also need to check to make sure they aren’t occupied by a piece unless it’s a piece of the opposite color in which case you can capture it. I leave this bit for you to figure out.
+           if(start.getRow()-2>=0 && start.getCol()-2>=0){
+                //if the square is a legal move add it to the list.                    
+                moves.add(b.getSquareArray()[start.getRow()-2][start.getCol()-2]);
+            }
+            if(start.getRow()-1>=0 && start.getCol()-1>=0){
+                //if the square is a legal move add it to the list.                    
+                moves.add(b.getSquareArray()[start.getRow()-1][start.getCol()-1]);
+            }
+            if(start.getRow()-2>=0 && start.getCol()+2<8){
+                //if the square is a legal move add it to the list.                    
+                moves.add(b.getSquareArray()[start.getRow()-2][start.getCol()+2]);
+            }
+            if(start.getRow()-1>=0 && start.getCol()+1<8){
+                //if the square is a legal move add it to the list.                    
+                moves.add(b.getSquareArray()[start.getRow()-1][start.getCol()+1]);
+            }
+            if(start.getRow()+2<8 && start.getCol()-2>=0){
+                //if the square is a legal move add it to the list.                    
+                moves.add(b.getSquareArray()[start.getRow()+2][start.getCol()-2]);
+            }
+            if(start.getRow()+1<8 && start.getCol()-1>=0){
+                //if the square is a legal move add it to the list.                    
+                moves.add(b.getSquareArray()[start.getRow()+1][start.getCol()-1]);
+            }
+            if(start.getRow()+2<8 && start.getCol()+2<8){
+                //if the square is a legal move add it to the list.                    
+                moves.add(b.getSquareArray()[start.getRow()+2][start.getCol()+2]);
+            }
+            if(start.getRow()+1<8 && start.getCol()+1<8){
+                //if the square is a legal move add it to the list.                    
+                moves.add(b.getSquareArray()[start.getRow()+1][start.getCol()+1]);
+            }
+
+       //dont forget to return!
+       return moves;
     }
 }

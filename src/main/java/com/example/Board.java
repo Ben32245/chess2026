@@ -1,6 +1,5 @@
 package com.example;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -9,13 +8,9 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.io.File;
 import java.util.ArrayList;
-import java.net.URL;
-import java.awt.Toolkit;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JPanel;
 
 //You will be implmenting a part of a function and a whole function in this document. Please follow the directions for the 
 //suggested order of completion that should make testing easier.
@@ -67,6 +62,34 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
 
         // TO BE IMPLEMENTED FIRST
 
+        //int row = 0;
+        //int col = 1;
+
+        //for (int i = 0; i < 64; i++, col++) {
+            
+            //board[row][col%8] = new Square(this, ((i + (row%2))%2 == 0), row, col%8);
+            //this.add(board[row][col%8]);
+            //if (col % 8 == 0) {
+                //row++;
+                //col -= 8;
+            //}
+            //System.out.println(row + " " + col);
+        //}
+
+        int row = 0;
+        int col = 0;
+
+        for (int i = 0; i < 64; i++) {
+            if (col == 8) {
+                row++;
+                col = 0;
+            }
+            System.out.println(row + " " + col);
+            board[row][col] = new Square(this, ((i + (row%2))%2 == 0), row, col);
+            this.add(board[row][col]);
+            col++;
+        }
+
         // for (.....)
         // populate the board with squares here. Note that the board is composed of 64
         // squares alternating from white to black.
@@ -94,7 +117,18 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
     // it's up to you how you wish to arrange your pieces.
     void initializePieces() {
 
-        board[0][0].put(new Piece(true, RESOURCES_WKING_PNG));
+        board[0][0].put(new Piece(true, RESOURCES_WBISHOP_PNG));
+
+        board[1][5].put(new Piece(false, RESOURCES_BPAWN_PNG));
+        board[2][6].put(new Piece(false, RESOURCES_BPAWN_PNG));
+        board[1][7].put(new Piece(false, RESOURCES_BPAWN_PNG));
+        board[0][6].put(new Piece(false, RESOURCES_BKNIGHT_PNG));
+        board[0][7].put(new Piece(false, RESOURCES_BKING_PNG));
+
+        board[6][7].put(new Piece(true, RESOURCES_WPAWN_PNG));
+        board[5][6].put(new Piece(true, RESOURCES_WPAWN_PNG));
+        board[6][5].put(new Piece(true, RESOURCES_WPAWN_PNG));
+        board[7][6].put(new Piece(true, RESOURCES_WKING_PNG));
 
     }
 
@@ -153,11 +187,28 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
     @Override
     public void mouseReleased(MouseEvent e) {
         endSquare = (Square) this.getComponentAt(new Point(e.getX(), e.getY()));
+        ArrayList<Square> legalMoves = currPiece.getLegalMoves(this, fromMoveSquare);
 
         // using currPiece
-        if(fromMoveSquare!= null){
+        if(fromMoveSquare!= null) {
             fromMoveSquare.setDisplay(true);
+            fromMoveSquare.removePiece();
         }
+
+        boolean ok = false;
+
+        for (int i = 0; i < legalMoves.size(); i++) {
+            if (endSquare != null && endSquare.equals(legalMoves.get(i))) {
+                ok = true;
+            }
+        }
+
+        if (ok) {
+            endSquare.put(currPiece);
+        } else {
+            fromMoveSquare.put(currPiece);
+        }
+
         currPiece = null;
         repaint();
     }
