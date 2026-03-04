@@ -106,37 +106,47 @@ public class Piece {
 	    ArrayList<Square> moves = new ArrayList<Square>();
 
 	    //make sure the squares we are adding are in bounds. (you’d also need to check to make sure they aren’t occupied by a piece unless it’s a piece of the opposite color in which case you can capture it. I leave this bit for you to figure out.
-           if(start.getRow()-2>=0 && start.getCol()-2>=0){
-                //if the square is a legal move add it to the list.                    
-                moves.add(b.getSquareArray()[start.getRow()-2][start.getCol()-2]);
+         
+
+            if(start.getRow()-2>=0 && start.getCol()-2>=0){
+                //if the square is a legal move add it to the list.    
+                if (!b.getSquareArray()[start.getRow()-2][start.getCol()-2].isOccupied() || b.getSquareArray()[start.getRow()-2][start.getCol()-2].getOccupyingPiece().getColor()!= color) {                
+                moves.add(b.getSquareArray()[start.getRow()-2][start.getCol()-2]);}
             }
             if(start.getRow()-1>=0 && start.getCol()-1>=0){
-                //if the square is a legal move add it to the list.                    
-                moves.add(b.getSquareArray()[start.getRow()-1][start.getCol()-1]);
+                //if the square is a legal move add it to the list.               
+                if (!b.getSquareArray()[start.getRow()-1][start.getCol()-1].isOccupied() || b.getSquareArray()[start.getRow()-1][start.getCol()-1].getOccupyingPiece().getColor()!= color) {      
+                moves.add(b.getSquareArray()[start.getRow()-1][start.getCol()-1]);}
             }
             if(start.getRow()-2>=0 && start.getCol()+2<8){
-                //if the square is a legal move add it to the list.                    
-                moves.add(b.getSquareArray()[start.getRow()-2][start.getCol()+2]);
+                //if the square is a legal move add it to the list.   
+                if (!b.getSquareArray()[start.getRow()-2][start.getCol()+2].isOccupied() || b.getSquareArray()[start.getRow()-2][start.getCol()+2].getOccupyingPiece().getColor()!= color) {                  
+                moves.add(b.getSquareArray()[start.getRow()-2][start.getCol()+2]);}
             }
             if(start.getRow()-1>=0 && start.getCol()+1<8){
                 //if the square is a legal move add it to the list.                    
-                moves.add(b.getSquareArray()[start.getRow()-1][start.getCol()+1]);
+                if (!b.getSquareArray()[start.getRow()-1][start.getCol()+1].isOccupied() || b.getSquareArray()[start.getRow()-1][start.getCol()+1].getOccupyingPiece().getColor()!= color) { 
+                moves.add(b.getSquareArray()[start.getRow()-1][start.getCol()+1]);}
             }
             if(start.getRow()+2<8 && start.getCol()-2>=0){
                 //if the square is a legal move add it to the list.                    
-                moves.add(b.getSquareArray()[start.getRow()+2][start.getCol()-2]);
+                if (!b.getSquareArray()[start.getRow()+2][start.getCol()-2].isOccupied() || b.getSquareArray()[start.getRow()+2][start.getCol()-2].getOccupyingPiece().getColor()!= color) { 
+                moves.add(b.getSquareArray()[start.getRow()+2][start.getCol()-2]);}
             }
             if(start.getRow()+1<8 && start.getCol()-1>=0){
                 //if the square is a legal move add it to the list.                    
-                moves.add(b.getSquareArray()[start.getRow()+1][start.getCol()-1]);
+                if (!b.getSquareArray()[start.getRow()+1][start.getCol()-1].isOccupied() || b.getSquareArray()[start.getRow()+1][start.getCol()-1].getOccupyingPiece().getColor()!= color) { 
+                moves.add(b.getSquareArray()[start.getRow()+1][start.getCol()-1]);}
             }
             if(start.getRow()+2<8 && start.getCol()+2<8){
-                //if the square is a legal move add it to the list.                    
-                moves.add(b.getSquareArray()[start.getRow()+2][start.getCol()+2]);
+                //if the square is a legal move add it to the list.   
+                if (!b.getSquareArray()[start.getRow()+2][start.getCol()+2].isOccupied() || b.getSquareArray()[start.getRow()+2][start.getCol()+2].getOccupyingPiece().getColor()!= color) {                  
+                moves.add(b.getSquareArray()[start.getRow()+2][start.getCol()+2]);}
             }
             if(start.getRow()+1<8 && start.getCol()+1<8){
-                //if the square is a legal move add it to the list.                    
-                moves.add(b.getSquareArray()[start.getRow()+1][start.getCol()+1]);
+                //if the square is a legal move add it to the list.     
+                if (!b.getSquareArray()[start.getRow()+1][start.getCol()+1].isOccupied() || b.getSquareArray()[start.getRow()+1][start.getCol()+1].getOccupyingPiece().getColor()!= color) {                
+                moves.add(b.getSquareArray()[start.getRow()+1][start.getCol()+1]);}
             }
 
        //dont forget to return!
